@@ -1,0 +1,20 @@
+{
+  "name": "suma-bdd",
+  "version": "1.0.0",
+  "description": "Ejemplo de suma con BDD",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --publish-quiet",
+    "coverage": "nyc --reporter=html cucumber-js --publish-quiet "
+  },
+  "author": "Esteban Volentini",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.0.0-rc.0",
+    "chai": "^4.2.0",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "exclude": "features/**"
+  }
+}
