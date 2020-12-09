@@ -7,7 +7,7 @@
     "test": "cucumber-js --publish-quiet",
     "coverage": "nyc --reporter=html cucumber-js --publish-quiet "
   },
-  "author": "Esteban Volentini",
+  "author": "Atilio Errecaborde",
   "license": "ISC",
   "devDependencies": {
     "@cucumber/cucumber": "^7.0.0-rc.0",
@@ -16,8 +16,5 @@
   },
   "nyc": {
     "exclude": "features/**"
-  },
-  "dependencies": {
-    "chai-sorted": "^0.2.0"
   }
 }
