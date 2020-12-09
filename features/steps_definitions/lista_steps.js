@@ -1,5 +1,8 @@
 const { Before, Given, When, Then } = require('@cucumber/cucumber')
-const expect = require("chai").expect;
+const chai = require("chai");
+chai.use(require("chai-sorted"));
+const assert = chai.assert;
+expect = chai.expect; 
 const Lista = require("../../module/lista.js");
 
 const Dado = require('@cucumber/cucumber').Given
@@ -8,22 +11,17 @@ const Entonces = require('@cucumber/cucumber').Then
 
 let contexto = {};
 
-Given('una lista vacía', function () {
-    // Write code here that turns the phrase above into concrete actions
-    contexto.Lista = new Lista;
-    return 'pending';
+Given('una lista vacía', function () {    
+    contexto.Lista = new Lista;   
 });
 
-When('se agrega la pareja {}', function (pareja) {
-    // Write code here that turns the phrase above into concrete actions
+When('se agrega la pareja {}', function (pareja) {   
     parea = JSON.parse(pareja);
-    contexto.Lista.add(Object.keys(pareja)[0], Object.values(pareja)[0]);
-    return 'pending';
+    contexto.Lista.add(Object.keys(pareja)[0], Object.values(pareja)[0]);    
 });
 
-Then('la lista tiene {int} elemento(s) almacenado(s)', function (cantidad) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
+Then('la lista tiene {int} elemento(s) almacenado(s)', function (cantidad) {    
+    expect(contexto.Lista.count()).to.equal(cantidad);
 });
 
 
@@ -46,6 +44,9 @@ Cuando('se busca la clave {string}', function (clave) {
     contexto.encontrado = contexto.Lista.find(clave);
 });
 
+Cuando('se recupera la lista de claves', function () {   
+    contexto.encontrado = contexto.Lista.elementos.map(p => p["clave"]).sort();      
+});
 
 Entonces('se obtiene el valor NaN', function () {
     expect(contexto.encontrado).is.NaN;
@@ -57,5 +58,9 @@ Entonces('se obtiene el valor {string}', function (valor) {
 
 Entonces('El nuevo valor de clave es {string}', function (valor) {
     expect(contexto.encontrado).is.equal(valor);
+});
+
+Entonces('la lista esta ordenada', function () {    
+    expect(contexto.encontrado).to.be.sorted();       
 });
 
