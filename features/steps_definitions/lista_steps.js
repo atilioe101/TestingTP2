@@ -45,7 +45,7 @@ Cuando('se busca la clave {string}', function (clave) {
 });
 
 Cuando('se recupera la lista de claves', function () {   
-    contexto.encontrado = contexto.Lista.elementos.map(p => p["clave"]).sort();      
+    contexto.encontrado = contexto.Lista.getKeys().sort();      
 });
 
 Entonces('se obtiene el valor NaN', function () {
